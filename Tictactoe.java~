@@ -4,15 +4,19 @@ import java.awt.event.*;
 
 public class Tictactoe {
 
-	private static JButton OKButton;
-	static private String playerName1;
-	static private String playerName2;
 	private static int turn = 1;
 	private static int game = 0;
+	private static boolean proceed;
 	
 	public static void main(String[] args){
 		final BasicWindow window = new BasicWindow();
+		while (proceed!=true) {
+			
+			proceed = window.getProceed();
+		}
 		
+		
+		System.out.println(window.getPlayer1().getName());
 	}
 	
 	public static int getTurn() {

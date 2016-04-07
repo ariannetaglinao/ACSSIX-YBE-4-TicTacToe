@@ -16,6 +16,8 @@ public class BasicWindow{
 	private JLabel tempLabel1; 
 	private JLabel tempLabel2; 
 	private int score;
+	private boolean proceed;
+	
 	
 	public BasicWindow(){
 		this.frame = new JFrame ("Tic-tac-toe");
@@ -81,20 +83,19 @@ public class BasicWindow{
 		panel3.add(BorderLayout.CENTER, main);
 		panel3.add(BorderLayout.SOUTH, panel2);
 		
-		
-
-		
 		OkButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {     
 				playerName1 = textPlayer1.getText();
 				playerName2 = textPlayer2.getText(); 
 				//bestOf = Integer.parseInt(textBestOf.getText());
+				setProceed(true);
+				instantiatePlayer1(playerName1);
+				instantiatePlayer2(playerName2);
 			 	CardLayout cardLayout = (CardLayout) cards.getLayout();
 				cardLayout.next(cards);
         	}
      	}); 
-
-
+     	
      	/*
      	
      	Thread t = new Thread(){
@@ -287,12 +288,28 @@ public class BasicWindow{
 	
 	public void setPlayer1Status(JLabel status) {
 		score = player1.getScore();
-		status.setText(player1.getName() + "(P1): " + score);
+		status.setText(playerName1 + "(P1): " + score);
 	}
 	
 	public void setPlayer2Status(JLabel status) {
 		score = player2.getScore();
-		status.setText(player2.getName() + "(P2): " + score);
+		status.setText(playerName2 + "(P2): " + score);
+	}
+	
+	public void instantiatePlayer1(String name) {
+		player1 = new Player(name);
+	}
+	
+	public void instantiatePlayer2(String name) {
+		player2 = new Player(name);
+	}
+	
+	public void setProceed(boolean proceed) {
+		this.proceed = proceed;
+	}
+	
+	public void getProceed() {
+		return proceed;
 	}
 	
 }
