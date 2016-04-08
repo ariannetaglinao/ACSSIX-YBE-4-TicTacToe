@@ -10,13 +10,14 @@ public class Tictactoe {
 	
 	public static void main(String[] args){
 		final BasicWindow window = new BasicWindow();
-		while (proceed!=true) {
-			
-			proceed = window.getProceed();
-		}
+	
+		//Player player1 = new Player("Player 1");
+		//Player player2 = new Player("Player 2");
 		
 		
-		System.out.println(window.getPlayer1().getName());
+		
+		
+		//System.out.println(window.getPlayer1().getName());
 	}
 	
 	public static int getTurn() {

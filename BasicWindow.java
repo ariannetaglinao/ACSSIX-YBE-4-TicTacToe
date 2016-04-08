@@ -89,43 +89,20 @@ public class BasicWindow{
 				playerName2 = textPlayer2.getText(); 
 				//bestOf = Integer.parseInt(textBestOf.getText());
 				setProceed(true);
-				instantiatePlayer1(playerName1);
-				instantiatePlayer2(playerName2);
 			 	CardLayout cardLayout = (CardLayout) cards.getLayout();
 				cardLayout.next(cards);
         	}
      	}); 
      	
-     	/*
-     	
-     	Thread t = new Thread(){
-			@Override 
-			public void run(){
-				try {
-					
-					OkButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {     
-							playerName1 = textPlayer1.getText();
-							playerName2 = textPlayer2.getText(); 
-						 	//bestOf = textBestOf.getText();
-						 	CardLayout cardLayout = (CardLayout) cards.getLayout();
-							cardLayout.next(cards);
-							System.out.println(playerName1);
-		    			}	
-     				}); 
-				
-				} catch (Exception e) { e.printStackTrace();}
-			}
-		};
-		
-		t.start(); */
 		return panel3;
 	}
 	
 	public JPanel playWindow() {
-			
-		player1 = new Player(playerName1);								//INSTANTIATE HOW?!?!
+	
+		player1 = new Player(playerName1);
 		player2 = new Player(playerName2);
+		
+		System.out.println(player1.getName());
 			
 		JPanel panel = new JPanel();
 		JPanel gamePanel = new JPanel();
@@ -294,14 +271,6 @@ public class BasicWindow{
 	public void setPlayer2Status(JLabel status) {
 		score = player2.getScore();
 		status.setText(playerName2 + "(P2): " + score);
-	}
-	
-	public void instantiatePlayer1(String name) {
-		player1 = new Player(name);
-	}
-	
-	public void instantiatePlayer2(String name) {
-		player2 = new Player(name);
 	}
 	
 	public void setProceed(boolean proceed) {
