@@ -12,26 +12,36 @@ public class BasicWindow{
 	private static int gameNumber;
 	private Player player1;
 	private Player player2;
-	private boolean ifOK = false;
 	private JLabel tempLabel1; 
 	private JLabel tempLabel2; 
 	private int score;
-	private boolean proceed;
+	private JPanel gamePanel;
+	private JButton button1;
+	private JButton button2;
+	private JButton button3;
+	private JButton button4;
+	private JButton button5;	
+	private JButton button6;
+	private JButton button7;
+	private JButton button8;
+	private JButton button9;
 	
 	
-	public BasicWindow(){
-		this.frame = new JFrame ("Tic-tac-toe");
+	
+	public BasicWindow(){ 
+		this.frame = new JFrame ("Tic-tac-toe"); 
 		cards = new JPanel(new CardLayout());
 		
 		this.frame.setSize(500, 300);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel card1 = startWindow(cards);
-        JPanel card2 = playWindow();
-	
-        cards.add(card1, "startGame");
-        cards.add(card2, "playGame");
-             
+		cards.add(card1, "startGame");
+		
+		
+
+		
+		          
         this.frame.add(cards);
         CardLayout cardLayout = (CardLayout) cards.getLayout();
 		cardLayout.show(cards, "startGame"); 
@@ -47,19 +57,21 @@ public class BasicWindow{
 		JPanel panel3 = new JPanel();
 		JPanel panel4 = new JPanel();
 		JLabel letter1 = new JLabel("Player 1 Name: ", SwingConstants.CENTER);
-		letter1.setFont(new Font("Calibri", Font.PLAIN, 24));
+		letter1.setFont(new Font("MONOSPACED", Font.PLAIN, 20));
 		JLabel letter2 = new JLabel("Player 2 Name: ", SwingConstants.CENTER);
-		letter2.setFont(new Font("Calibri", Font.PLAIN, 24));
+		letter2.setFont(new Font("MONOSPACED", Font.PLAIN, 20));
 		JLabel letter3 = new JLabel("Best of: ", SwingConstants.CENTER);
-		letter3.setFont(new Font("Calibri", Font.PLAIN, 24));
+		letter3.setFont(new Font("MONOSPACED", Font.PLAIN, 20));
 		panel.setLayout(new GridLayout(3,2));
 		panel.add(letter1);
 		panel.add(letter2);
 		panel.add(letter3);
 		final JTextField textPlayer1 = new JTextField(15);
-		textPlayer1.setPreferredSize(new Dimension(20,30));
+		textPlayer1.setPreferredSize(new Dimension(15,25));
 		final JTextField textPlayer2 = new JTextField(15);
+		textPlayer2.setPreferredSize(new Dimension(15,25));
 		final JTextField textBestOf = new JTextField(15);
+		textBestOf.setPreferredSize(new Dimension(15,25));
 		panel1.setLayout(new GridLayout(3,2));
 		panel1.add(textPlayer1);
 		panel1.add(textPlayer2);
@@ -86,9 +98,16 @@ public class BasicWindow{
 		OkButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {     
 				playerName1 = textPlayer1.getText();
-				playerName2 = textPlayer2.getText(); 
-				//bestOf = Integer.parseInt(textBestOf.getText());
-				setProceed(true);
+				playerName2 = textPlayer2.getText();
+				//System.out.println(playerName1); 
+				try {
+				bestOf = Integer.parseInt(textBestOf.getText());
+				} catch (Exception ex) {}
+				
+						
+      		  JPanel card2 = playWindow(player1, player2);
+       			cards.add(card2, "playGame");
+       			frame.add(cards);
 			 	CardLayout cardLayout = (CardLayout) cards.getLayout();
 				cardLayout.next(cards);
         	}
@@ -97,15 +116,13 @@ public class BasicWindow{
 		return panel3;
 	}
 	
-	public JPanel playWindow() {
-	
+	public JPanel playWindow(Player p1, Player p2) {
 		player1 = new Player(playerName1);
 		player2 = new Player(playerName2);
-		
-		System.out.println(player1.getName());
+
 			
 		JPanel panel = new JPanel();
-		JPanel gamePanel = new JPanel();
+		gamePanel = new JPanel();
 		JPanel status = new JPanel();
 		
 	 	BorderLayout layout = new BorderLayout();
@@ -147,79 +164,95 @@ public class BasicWindow{
 		
 		gamePanel.setLayout(new GridLayout(3,3));
 		
-		final JButton button1 = new JButton("1");
-		final JButton button2 = new JButton("2");
-		final JButton button3 = new JButton("3");
-		final JButton button4 = new JButton("4");
-		final JButton button5 = new JButton("5");
-		final JButton button6 = new JButton("6");
-		final JButton button7 = new JButton("7");
-		final JButton button8 = new JButton("8");
-		final JButton button9 = new JButton("9");
+		button1 = new JButton("");
+		button2 = new JButton("");
+		button3 = new JButton("");
+		button4 = new JButton("");
+		button5 = new JButton("");
+		button6 = new JButton("");
+		button7 = new JButton("");
+		button8 = new JButton("");
+		button9 = new JButton("");
 
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button1.setText("X");
 					else button1.setText("O");
+					turnNumber+=1;
+					System.out.println(turnNumber);
 		    	}	
      	}); 
      	
      	button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber	%2 == 0)     
 					button2.setText("X");
 					else button2.setText("O");
+					turnNumber+=1;
 		    	}	
      	}); 
      	button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button3.setText("X");
 					else button3.setText("O");
+					turnNumber+=1;
 		    	}	
      	});
      	button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button4.setText("X");
 					else button4.setText("O");
+					turnNumber+=1;
+					checkRound();
 		    	}	
      	});
      	button5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button5.setText("X");
 					else button5.setText("O");
+					turnNumber+=1;
+					checkRound();
 		    	}	
      	});
      	button6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button6.setText("X");
 					else button6.setText("O");
+					turnNumber+=1;
+					checkRound();
 		    	}	
      	});
      	button7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button7.setText("X");
 					else button7.setText("O");
+					turnNumber+=1;
+					checkRound();
 		    	}	
      	});
      	button8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button8.setText("X");
 					else button8.setText("O");
+					turnNumber+=1;
+					checkRound();
 		    	}	
      	});
      	
      	button9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (Tictactoe.getTurn()%2 == 0)     
+				if (turnNumber%2 == 0)     
 					button9.setText("X");
 					else button9.setText("O");
+					turnNumber+=1;
+					checkRound();
 		    	}	
      	});
      	
@@ -265,21 +298,18 @@ public class BasicWindow{
 	
 	public void setPlayer1Status(JLabel status) {
 		score = player1.getScore();
-		status.setText(playerName1 + "(P1): " + score);
+		status.setText(playerName1 + " (P1): " + score);
 	}
 	
 	public void setPlayer2Status(JLabel status) {
 		score = player2.getScore();
-		status.setText(playerName2 + "(P2): " + score);
+		status.setText(playerName2 + " (P2): " + score);
 	}
 	
-	public void setProceed(boolean proceed) {
-		this.proceed = proceed;
-	}
-	
-	public boolean getProceed() {
-		return proceed;
-	}
-	
+	public void checkRound() {
+		if(button1.getText() == "X" && button2.getText() == "X" && button3.getText() == "X"){
+			System.out.println("Player 2 wins");
+		}
+		
 }
-
+}

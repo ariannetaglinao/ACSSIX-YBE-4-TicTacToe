@@ -7,17 +7,13 @@ public class Tictactoe {
 	private static int turn = 1;
 	private static int game = 0;
 	private static boolean proceed;
+	private static Player player1;
+	private static Player player2; 
 	
 	public static void main(String[] args){
 		final BasicWindow window = new BasicWindow();
-	
-		//Player player1 = new Player("Player 1");
-		//Player player2 = new Player("Player 2");
-		
-		
-		
-		
-		//System.out.println(window.getPlayer1().getName());
+
+		//System.out.println(window.getPlayer1());
 	}
 	
 	public static int getTurn() {
