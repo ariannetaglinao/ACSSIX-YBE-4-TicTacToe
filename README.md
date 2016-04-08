@@ -2,6 +2,6 @@
 
 Members:
 
-Gonzales, Joseph Gabriel
-Lenon, Kris
-Taglinao, Lee Arianne
+* Gonzales, Joseph Gabriel
+* Lenon, Kris
+* Taglinao, Lee Arianne
