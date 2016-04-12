@@ -8,13 +8,14 @@ public class BasicWindow{
 	static private String playerName2;
 	private int bestOf;
 	final private JPanel cards;
-	private static int turnNumber;
-	private static int gameNumber;
+	private static int turnNumber = 1;
+	private static int gameNumber = 1;
 	private Player player1;
 	private Player player2;
 	private JLabel tempLabel1; 
 	private JLabel tempLabel2; 
-	private int score;
+	private int p1score;
+	private int p2score;
 	private JPanel gamePanel;
 	private JButton button1;
 	private JButton button2;
@@ -25,6 +26,9 @@ public class BasicWindow{
 	private JButton button7;
 	private JButton button8;
 	private JButton button9;
+	private JLabel gameLabel;
+	private JLabel p1Label;
+	private JLabel p2Label;
 	
 	
 	
@@ -37,9 +41,6 @@ public class BasicWindow{
 		
 		JPanel card1 = startWindow(cards);
 		cards.add(card1, "startGame");
-		
-		
-
 		
 		          
         this.frame.add(cards);
@@ -130,19 +131,19 @@ public class BasicWindow{
       	layout.setVgap(10);
       	panel.setLayout(layout);
       	
-		JLabel turn = new JLabel();
+		final JLabel turn = new JLabel();
 		setTurnText(turn);
 		turn.setPreferredSize(new Dimension(50, 40));
 		turn.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(turn, BorderLayout.NORTH);
 		
 		status.setLayout(new GridLayout(1,3));
-		JLabel p1Label = new JLabel();
+		p1Label = new JLabel();
 		setPlayer1Status(p1Label);
 		
-		JLabel gameLabel = new JLabel();
+		gameLabel = new JLabel();
 		setGameText(gameLabel);
-		JLabel p2Label = new JLabel();
+		p2Label = new JLabel();
 		setPlayer2Status(p2Label);
 		
 		status.add(p1Label);
@@ -176,83 +177,140 @@ public class BasicWindow{
 
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button1.getText()==""){
 				if (turnNumber%2 == 0)     
 					button1.setText("X");
 					else button1.setText("O");
 					turnNumber+=1;
+					checkRound();
+					setTurnText(turn);
 					System.out.println(turnNumber);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	}); 
      	
      	button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button2.getText()==""){
 				if (turnNumber	%2 == 0)     
 					button2.setText("X");
 					else button2.setText("O");
 					turnNumber+=1;
+					checkRound();
+					setTurnText(turn);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	}); 
      	button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button3.getText()==""){
 				if (turnNumber%2 == 0)     
 					button3.setText("X");
 					else button3.setText("O");
 					turnNumber+=1;
+					checkRound();
+					setTurnText(turn);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	});
      	button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button4.getText()==""){
 				if (turnNumber%2 == 0)     
 					button4.setText("X");
 					else button4.setText("O");
 					turnNumber+=1;
 					checkRound();
+					setTurnText(turn);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	});
      	button5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button5.getText()==""){
 				if (turnNumber%2 == 0)     
 					button5.setText("X");
 					else button5.setText("O");
 					turnNumber+=1;
 					checkRound();
+					setTurnText(turn);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	});
      	button6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button6.getText()==""){
 				if (turnNumber%2 == 0)     
 					button6.setText("X");
 					else button6.setText("O");
 					turnNumber+=1;
 					checkRound();
+					setTurnText(turn);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	});
      	button7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button7.getText()==""){
 				if (turnNumber%2 == 0)     
 					button7.setText("X");
 					else button7.setText("O");
 					turnNumber+=1;
 					checkRound();
+					setTurnText(turn);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	});
      	button8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if(button8.getText()==""){
 				if (turnNumber%2 == 0)     
 					button8.setText("X");
 					else button8.setText("O");
 					turnNumber+=1;
 					checkRound();
+					setTurnText(turn);
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Space already taken");
+				}
 		    	}	
      	});
      	
      	button9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (turnNumber%2 == 0)     
-					button9.setText("X");
-					else button9.setText("O");
-					turnNumber+=1;
-					checkRound();
+					if(button9.getText()==""){
+							if (turnNumber%2 == 0)     
+							button9.setText("X");
+							else button9.setText("O");
+							turnNumber+=1;
+							checkRound();
+							setTurnText(turn);
+						}
+					else{
+						JOptionPane.showMessageDialog(frame, "Space already taken");
+					}
 		    	}	
      	});
      	
@@ -287,29 +345,231 @@ public class BasicWindow{
 	}
 	
 	public void setTurnText(JLabel turn) {
-		turnNumber = Tictactoe.getTurn();
-		turn.setText("Turn " + turnNumber + ": <name> (Player <>)");
+		//turnNumber = Tictactoe.getTurn();
+		if(turnNumber%2==0) turn.setText("Turn " + turnNumber + " " + playerName2 + " Player 2");
+		else turn.setText("Turn " + turnNumber + " " + playerName1 + " Player 1");
 	}
 	
 	public void setGameText(JLabel gameLabel) {
-		gameNumber = Tictactoe.getGame();
+		//gameNumber = Tictactoe.getGame();
 		gameLabel.setText("Game " + gameNumber + " out of " + bestOf + ": ");
 	}
 	
 	public void setPlayer1Status(JLabel status) {
-		score = player1.getScore();
-		status.setText(playerName1 + " (P1): " + score);
+		//score = player1.getScore();
+		status.setText(playerName1 + " (P1): " + p1score);
 	}
 	
 	public void setPlayer2Status(JLabel status) {
-		score = player2.getScore();
-		status.setText(playerName2 + " (P2): " + score);
+		//score = player2.getScore();
+		status.setText(playerName2 + " (P2): " + p2score);
 	}
 	
 	public void checkRound() {
 		if(button1.getText() == "X" && button2.getText() == "X" && button3.getText() == "X"){
 			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer2Status(p2Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button1.getText() == "X" && button4.getText() == "X" && button7.getText() == "X"){
+			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer2Status(p2Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button2.getText() == "X" && button5.getText() == "X" && button8.getText() == "X"){
+			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker(); 	
+			setGameText(gameLabel);
+			setPlayer2Status(p2Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button3.getText() == "X" && button6.getText() == "X" && button9.getText() == "X"){
+			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer2Status(p2Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button1.getText() == "X" && button5.getText() == "X" && button9.getText() == "X"){
+			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker();
+			setGameText(gameLabel);
+			champChecker();
+			resetBoard();
+		}
+		else if(button4.getText() == "X" && button5.getText() == "X" && button6.getText() == "X"){
+			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer2Status(p2Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button7.getText() == "X" && button8.getText() == "X" && button9.getText() == "X"){
+			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer2Status(p2Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button3.getText() == "X" && button5.getText() == "X" && button7.getText() == "X"){
+			System.out.println("Player 2 wins");
+			JOptionPane.showMessageDialog(frame, "Player 2 wins!");
+			gameNumber++;
+			p2score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer2Status(p2Label);
+			champChecker();
+			resetBoard();
+		}
+		if(button1.getText() == "O" && button2.getText() == "O" && button3.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button1.getText() == "O" && button4.getText() == "O" && button7.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+			//champChecker();
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button2.getText() == "O" && button5.getText() == "O" && button8.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+//			champChecker();
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button3.getText() == "O" && button6.getText() == "O" && button9.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+//			champChecker();
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button1.getText() == "O" && button5.getText() == "O" && button9.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+//			champChecker();
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button4.getText() == "O" && button5.getText() == "O" && button6.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+//			champChecker();
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button7.getText() == "O" && button8.getText() == "O" && button9.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+//			champChecker();
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+		else if(button3.getText() == "O" && button5.getText() == "O" && button7.getText() == "O"){
+			System.out.println("Player 1 wins");
+			JOptionPane.showMessageDialog(frame, "Player 1 wins!");
+			gameNumber++;
+			p1score++;
+			
+			setGameText(gameLabel);
+			setPlayer1Status(p1Label);
+			champChecker();
+			resetBoard();
+		}
+ 
 		}
 		
-}
-}
+		public void resetBoard(){
+			turnNumber = 1; 
+			
+			button1.setText("");
+			button2.setText("");
+			button3.setText("");
+			button4.setText("");
+			button5.setText("");
+			button6.setText("");
+			button7.setText("");
+			button8.setText("");
+			button9.setText("");
+		
+		}
+		public void champChecker(){	
+			if(gameNumber > bestOf && p1score > p2score){ 
+				System.out.println("Player one wins!");
+				JOptionPane.showMessageDialog(frame, "Player 1 victorious");
+				System.exit(0);
+				}
+			else if(gameNumber > bestOf && p1score < p2score){ 
+				System.out.println("Player 2 wins!");
+				JOptionPane.showMessageDialog(frame, "Player 2 victorious!");
+				System.exit(0);
+				}
+		
+		
+		}	
+	}
